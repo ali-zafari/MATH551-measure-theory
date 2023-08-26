@@ -10,7 +10,7 @@
 ---
 
 |  | Problems | My Solutions |
-| :---:|:---:|:---:|
-| HW1 | **1.A**: 12, 13 **1.B**: 1, 5 | [link](assignments/HW1.pdf) |
-
+| :---:|:---|:---:|
+| HW1 | **1.A**: 12, 13 <br>**1.B**: 1, 5 | [link](assignments/HW1.pdf) |
+| HW2 | **2.A**: 3, 6, 10, 12  | []() |
 
