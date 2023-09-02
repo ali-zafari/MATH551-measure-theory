@@ -1,0 +1,168 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{2\hspace{1pt}A\hspace{20pt}Exercise 3 }
+
+\begin{align*}
+    B\subseteq B=B\cap(A\cup A^c)=(B\cap A)\cup(B\cap A^c)=(B\cap A)\cup(B\setminus A)
+\end{align*}
+by using order-preserving property of outer measure:
+\begin{align*}
+    |B|\leq|(B\cap A)\cup(B\setminus A)|  
+\end{align*}
+and using subadditiviy property of outer measure:
+\begin{align}
+    |B|\leq|B\cap A|+|B\setminus A| 
+    \label{eq:eq1}
+\end{align}
+we also have $A\cap B\subseteq A$, so again by subadditiviy property of outer measure we have $|A\cap B|\leq |A|$, hence by replacing in Eq. \ref{eq:eq1}:
+\begin{align*}
+    |B|\leq|A|+|B\setminus A| \\
+    |B\setminus A|\geq |B|-|A|
+\end{align*}
+
+\clearpage
+
+\subsection*{2\hspace{1pt}A\hspace{20pt}Exercise 6}\label{sec:2aex6}
+We know from \measure{2.14} that $|[a,b]|=b-a$.
+\begin{itemize}
+    \item $\mathbf{|(a, b)|=b-a}$
+    \begin{itemize}
+        \item To show $|(a, b)|\leq b-a$:
+            \begin{align*}
+                (a,b)\subseteq[a,b]
+                \Longrightarrow|(a,b)|\leq |[a,b]|
+                \Longrightarrow|(a,b)|\leq b-a
+            \end{align*}
+        \item To show $|(a, b)|\geq b-a$:\\
+        We have $[a,b]=\{a\}\cup\{b\}\cup(a,b)$ and by using subaditivity property of outer measure:
+        \begin{align*}
+            \underbrace{|[a,b]|}_{b-a}\leq\underbrace{|\{a\}|}_0+\underbrace{|\{b\}|}_0+|(a,b)|\Longrightarrow |(a,b)|\geq b-a
+        \end{align*}
+        Therefore, $|(a, b)|=b-a$.
+    \end{itemize}
+    
+    \item $\mathbf{|[a, b)|=b-a}$
+    \begin{itemize}
+        \item To show $|[a, b)|\leq b-a$:
+            \begin{align*}
+                [a,b)\subseteq[a,b]
+                \Longrightarrow|[a,b)|\leq |[a,b]|
+                \Longrightarrow|[a,b)|\leq b-a
+            \end{align*}
+        \item To show $|[a, b)|\geq b-a$:\\
+        We have $[a,b]=\{b\}\cup[a,b)$ and by using subaditivity property of outer measure:
+        \begin{align*}
+            \underbrace{|[a,b]|}_{b-a}\leq\underbrace{|\{b\}|}_0+|[a,b)|\Longrightarrow |[a,b)|\geq b-a
+        \end{align*}
+        Therefore, $|[a, b)|=b-a$.
+    \end{itemize}
+    
+    \item $\mathbf{|(a, b]|=b-a}$
+    \begin{itemize}
+        \item To show $|(a, b]|\leq b-a$:
+            \begin{align*}
+                (a,b]\subseteq[a,b]
+                \Longrightarrow|(a,b]|\leq |[a,b]|
+                \Longrightarrow|(a,b]|\leq b-a
+            \end{align*}
+        \item To show $|(a, b]|\geq b-a$:\\
+        We have $[a,b]=\{a\}\cup(a,b]$ and by using subaditivity property of outer measure:
+        \begin{align*}
+            \underbrace{|[a,b]|}_{b-a}\leq\underbrace{|\{a\}|}_0+|(a,b]|\Longrightarrow |(a,b]|\geq b-a
+        \end{align*}
+        Therefore, $|(a, b]|=b-a$.
+    \end{itemize}
+\end{itemize}
+\clearpage
+
+\subsection*{2\hspace{1pt}A\hspace{20pt}Exercise 10}
+We know from \measure{2.14} that $|[0,1]|=1$.
+\begin{itemize}
+    \item To show $|[0,1]\setminus Q|\leq 1$:\\
+    \begin{align*}
+        [0,1]\setminus Q\subseteq[0,1]\Longrightarrow |[0,1]\setminus Q|\leq 1
+    \end{align*}
+    \item To show $|[0,1]\setminus Q|\geq 1$:\\
+    By using the proved result of {\color{blue}2A Exercise 3} and knowing that $|Q|=0<\infty$:
+    \begin{align*}
+        |[0,1]\setminus Q|\geq|[0,1]|-\underbrace{|Q|}_{0}\Longrightarrow|[0,1]\setminus Q|\geq1
+    \end{align*}
+\end{itemize}
+Therefore$|[0,1]\setminus Q|=1$.
+\clearpage
+
+\subsection*{2\hspace{1pt}A\hspace{20pt}Exercise 12}
+    \begin{align*}
+        F=\R\setminus \bigcup_{k=1}^\infty(r_k-\frac{1}{2^k},r_k+\frac{1}{2^k})
+    \end{align*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Let $A:=\bigcup_{k=1}^\infty\left(r_k-\frac{1}{2^k},r_k+\frac{1}{2^k}\right)$.\\
+        We know from \suppmeasure{0.55} that union of open subsets in $\R$ is an open subset. Therefore, since $F$ is the complement of $A$ and must be a closet subset of $\R$ by \suppmeasure{0.61}.
+        
+        \item By definition, there exists no rational number in $F$.\\
+        Let $a,b\in I\subseteq F$ where $a$ and $b$ are two arbitrary distinct irrational numbers ($a\neq b$). WLOG we assume $b>a$. Since $I$ is supposed to be an interval, then $(a,b)\subseteq I$.\\
+        By \suppmeasure{0.30} there must exist a rational number in $(a,b)$, which is a contradiction with the definition of $F$.\\
+        Therefore $a$ and $b$ cannot be distinct and $I$ contains at most one element.
+        
+        \item To be able to use the proved result of {\color{blue}2A Exercise 3} we must first show that $|A|<\infty$:
+        \begin{align*}
+            |A|=\left|\bigcup_{k=1}^\infty(r_k-\frac{1}{2^k},r_k+\frac{1}{2^k})\right|<\sum_{k=1}^\infty\left|(r_k-\frac{1}{2^k},r_k+\frac{1}{2^k})\right|=2<\infty
+        \end{align*}
+        So we have:
+        \begin{align*}
+            |F|=\left|\R\setminus \bigcup_{k=1}^\infty(r_k-\frac{1}{2^k},r_k+\frac{1}{2^k})\right|\geq|\R|-2 >\infty
+        \end{align*}
+    \end{enumerate}
+\clearpage
+
+\end{document}
