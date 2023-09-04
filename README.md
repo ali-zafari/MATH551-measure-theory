@@ -1,6 +1,8 @@
 # MATH 551 - Introduction to Measure Theory
 
 - Fall 2023 [in progress]
+
+- Syllabus: [link](syllabus.pdf)
  
 - Textbook: **Axler, S., [Measure, Integration & Real Analysis](https://measure.axler.net/)**
 
