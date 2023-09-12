@@ -1,0 +1,130 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{2\hspace{1pt}B\hspace{20pt}Exercise 1 }
+We need to show that $\S$ satisfies 3 conditions of $\sigma$-algebra:
+\begin{itemize}
+    \item $\varnothing\in \S$ when we choose $K=\varnothing\subseteq\Z$.
+    
+    \item Let $E\in\S$. Then, by definition, there exists $K\subseteq \Z$ such that $E=\bigcup_{n\in K}(n, n+1]$.\\
+    WLOG let $K=\{k_1,k_2,\dots\}$ such that $k_1>k_2>\dots$ and $k_1, k_2, \dots$ are pairwise distinct, then $E=(k_1,k_1+1]\cup(k_2,k_2+1]\cup\dots$, therefore $E^c=\dots\cup(k_1-1,k_1]\cup(k_1+1,k_1+2]\cup\dots\cup(k_2-1,k_2]\cup(k_2+1,k_2+2]\cup\dots$.\\
+    We can write $E^c$ as $E^c=\bigcup_{n\in \Z\setminus K}(n, n+1]$. Since $\Z\setminus K\subseteq\Z$ then $E^c\in\S$.
+    
+    \item Let $\bigcup_{n\in K_1}(n, n+1],\bigcup_{n\in K_2}(n, n+1],\dots\in\S$. Then the union of this sequence of elements in $\S$ is  $\bigcup_{i=1}^\infty\cup_{n\in K_i}(n, n+1]$, which is equal to $\bigcup_{n\in K}(n, n+1]$ where $K=\bigcup_{i=1}^\infty K_i$. And $\bigcup_{n\in K}(n, n+1]\in\S$ by definition of $\S$.
+\end{itemize}
+\clearpage
+
+\subsection*{2\hspace{1pt}B\hspace{20pt}Exercise 4}
+Let $\S'=\{(r,s]: r,s\in \mathbb{Q}\}$ be the collection of Borel subsets of $\R$ (Theorem ($\spadesuit$)).\\
+To show that $S$ equals the collection of Borel subsets of $\R$:
+\begin{itemize}[label={}]
+    \item``$\bm{\Rightarrow}$"\\
+    Let $r,s\in\mathbb{Q}$. Define $n\in\Z$ such that $n\geq s$.\\
+    Then we have $\underbrace{(r,s]}_{\in \S'}=(r,n]\cap(-\infty,s]=\underbrace{\underbrace{(r,n]}_{\in\S}\cap(\underbrace{\R\setminus\underbrace{(s,n+1]}_{\in\S}}_{\in\S})}_{\in\S}$. Therefore $(r,s]\in S$, i.e., each element of $\S'$ is included in $S$. 
+    Using theorem ($\spadesuit$), the collection of Borel subsets of $\R$ is a subset of $\S$.
+
+    \item``$\bm{\Leftarrow}$"\\
+    Let $r\in\mathbb{Q}$ and $n\in\Z$. Then $(r,n]\in\{(r,s]: r,s\in \mathbb{Q}\}$. 
+    It means that every element of $\S$ is also an element of $\S'$. Using theorem ($\spadesuit$), $\S$ is a subset of the collection of Borel subsets of $\R$.\\
+\end{itemize}
+\hrule
+\subsubsection*{Theorem ($\spadesuit$) \qquad [{\color{blue}2\hspace{1pt}B\hspace{5pt}Exercise 3}]}
+{\color{violet}Suppose $\S'$ is the smallest $\sigma$-algebra on $\R$ containing $\{(r,s]: r,s\in \mathbb{Q}\}$. Prove that $\S'$ is the collection of Borel subsets of $\R$.\\
+}\textbf{proof.}
+\begin{itemize}[label={}]
+    \item``$\bm{\Rightarrow}$"\\
+    Let $r,s\in\mathbb{Q}$. Then $(r,s]=\bigcap_{n=1}^\infty(r,s+\frac{1}{n})$. Since each $(r,s+\frac{1}{n})$ is a Borel set, then $(r,s]$ is also a Borel set by \measure{2.25}. So $\S'$ is a subset of the collection of Borel subsets of $\R$.
+
+    \item``$\bm{\Leftarrow}$"\\
+    Let $a,b\in\mathbb{Q}$. Then $(a,b)=\bigcup_{n=1}^\infty(a,b-\frac{1}{n}]\in\S'$. Let $c,d\in\R$. For any $n\in\mathbb{N}$, there exists $a_n,b_n\in\mathbb{Q}$ such that $c\leq a_n<c+\frac{1}{n}$ and $d-\frac{1}{n}<b_n\leq d$. Then $(c,d)=\bigcup_{n=1}^\infty(a_n,b_n)$. Since $(a_n, b_n)\in\S'$ for each $n\in\mathbb{N}$, $(c,d)\in\S'$. A subset of $\R$ is open if and only if it is the union of a disjoint sequence of open intervals by \suppmeasure{0.59}. So any open subset of $\R$ is included in $\S'$. Therefore, the collection of Borel subsets of $\R$ is a subset of $\S'$.
+
+\end{itemize}
+\clearpage
+
+\subsection*{2\hspace{1pt}B\hspace{20pt}Exercise 8}
+Conditioning on the value of $\mathbf{t\in\R}$:
+\begin{itemize}
+    \item If $\mathbf{t=0}$, then if $B\subseteq\R$ is a Borel set, $tB=\{0\}$ is also a Borel set since every countable subset of $\R$ is a Borel set (by \measure{2.30}).
+    
+    \item If $\bm{t\in\R\setminus\{0\}}$ and by defining function $f:\R\rightarrow\R$ as $f(x)=\frac{x}{t}$, we argue that f is a Borel-measurable function since it is continuous. Therefore by definition of Borel-measurable functions, $f^{-1}(B)=tB$ is a Borel set for every Borel set $B\subseteq\R$. 
+\end{itemize}
+\clearpage
+
+\subsection*{2\hspace{1pt}B\hspace{20pt}Exercise 12}
+\begin{enumerate}[label=(\alph*)]
+    \item Let $k\in\Z^+$ and $x\in G_k$. By definition, there exists $\delta_x>0$ such that $|f(b)-f(c)|<\frac{1}{k}\quad \forall b,c\in(x-\delta, x+\delta)$. Given the value of $\delta$, let $\delta_x<\delta$ be such that it builds a ball around $x$ as $\underbrace{(x-\delta_x,x+\delta_x)}_{B(x, \delta_x)}\subset(x-\delta,x+\delta)$ and pick $y\in B(x,\delta_x)$.\\
+    Given the value of $y$ and $\delta_x$, now let $\delta_y<\delta_x$ such that $\underbrace{(y-\delta_y,y+\delta_y)}_{B(y, \delta_y)}\subset B(x,\delta_x)$. \\
+    Then for any $b',c'\in B(y, \delta_y)$ we have $|f(b')-f(c')|<\frac{1}{k}$, thus we can conclude that $y\in G_k$. Since $y$ was chosen arbitrarily from $B(x, \delta_x)$ then $B(x, \delta_x)\subset G_k$ which means that an open ball around $x$ exists for each element $x$ of $G_k$. Therefore $G_k$ is an open subset of $\R$.
+
+    \item To show $\bigcap_{k=1}^\infty G_k=\underbrace{\{\text{set of points at which $f$ is continuous}\}}_{:=C}$:
+    \begin{itemize}[label={}]
+        \item``$\bm{\Rightarrow}$"\\
+        Let $x\in\bigcap_{k=1}^\infty G_k$ and let $\epsilon>0$. There exists an $n\in\Z^+$ such that $\frac{1}{n}\leq\epsilon$ and $x\in G_n$, so $|f(x')-f(x)|<\frac{1}{n}\leq\epsilon$ for all $x'\in B(x, \delta_x)$, i.e., for all $x'$ such that $|x'-x|<\delta_x$. Therefore $x\in C$.\\
+        
+        \item``$\bm{\Leftarrow}$"\\
+        Let $x\in C$ and $k\in\Z^+$. Then there is $\delta_x$ such that $|f(x')-f(x)|<\frac{1}{2k}\quad \forall x'\in B(x,\delta_x)$. Using triangle inequality:
+        \begin{align*}
+            |f(x'')-f(x')|<|f(x'')-f(x)|+|f(x)-f(x')|<\frac{1}{2k}+\frac{1}{2k}=\frac{1}{k}
+        \end{align*}
+        for all $x',x''\in B(x,\delta_x)$, so $x\in G_k$. Since $k$ was arbitrary, then $x\in \bigcap_{k=1}^\infty G_k$.
+    \end{itemize}
+        
+    \item Since $G_k$'s are open subsets of $\R$ then they are Borel sets. Borel sets are closed under intersection, therefore $\bigcap_{k=1}^\infty G_k$ is also a Borel set. And as we showed in part (b), this set is equal to the set of points at which $f$ is continuous. Hence the set of points at which $f$ is continuous, is a Borel set.
+\end{enumerate}
+\clearpage
+
+\end{document}
