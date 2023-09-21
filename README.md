@@ -16,4 +16,4 @@
 | HW1 | **1.A**: 12, 13 <br>**1.B**: 1, 5 | [PDF](assignments/HW1.pdf) |
 | HW2 | **2.A**: 3, 6, 10, 12  | [PDF](assignments/HW2.pdf) |
 | HW3 | **2.B**: 1, 4, 8, 12  | [PDF](assignments/HW3.pdf) |
-| HW4 | - | [-]() |
+| HW4 | **2.B**: 18, 25 <br>**2.C**: 2, 9 | [PDF](assignments/HW4.pdf) |
