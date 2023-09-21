@@ -1,0 +1,111 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{2\hspace{1pt}B\hspace{20pt}Exercise 18 }
+$\forall x\in\R$ derivative of $f$ exists as
+\begin{align*}
+    f'(x)=\lim_{\delta\rightarrow0}\frac{f(x+\delta)-f(x)}{\delta}
+\end{align*}
+There exist $k\in\mathbb{N}$ such that $\frac{1}{k}<\delta$ for each $\delta>0$, thus if $\delta\rightarrow0$ then $k\rightarrow\infty$.
+\\Let sequence of $g_1, g_2, \dots$ defined as:
+\begin{align*}
+    g_k(x)=\frac{f(x+\frac{1}{k})-f(x)}{\frac{1}{k}}
+\end{align*}
+Since differentiability implies continuity, $f(x)$ is a continuous function therefore $\frac{f(x+\frac{1}{k})}{\frac{1}{k}}$ and $\frac{f(x)}{\frac{1}{k}}$ are continuous functions and also measurable $\forall k\in\mathbb{N}$ by \measure{2.41}.\\\\Then $g_k$ is also measurable by \measure{2.46}.\\\\
+As a result, since $f'(x)$ is a point-wise limit of $g_k$, we have $\forall x\in\R$
+\begin{align*}
+    f'(x)=\lim_{k\rightarrow\infty}g_k(x)
+\end{align*}
+then by \measure{2.48} $f'(x)$ is also Borel measurable.
+\clearpage
+
+\subsection*{2\hspace{1pt}B\hspace{20pt}Exercise 25}
+Let $f_k\quad\forall k\in\mathbb{N}$ be defined as
+\begin{align*}
+    f_k(x):=f(x)+\frac{x}{k}
+\end{align*}
+$f_k(x)$ is trivially an strictly increasing function where its point-wise limit equals $f(x)$, i.e. $f(x)=\lim_{k\rightarrow\infty}f_k(x)$, and satisfies the conditions mentioned in the problem.
+
+\clearpage
+
+\subsection*{2\hspace{1pt}C\hspace{20pt}Exercise 2}
+Let $w_k\quad\forall k\in E$ be defined as
+\begin{align*}
+    w_k:=\mu(\{k\})
+\end{align*}
+which satisfies the conditions mentioned in the problem, when $E_k:=\{k\}$
+\begin{align*}
+    \mu(E)=\mu(\bigcup_{k\in E} E_k)=\sum_{k\in E}\mu(E_k)=\sum_{k\in E}\mu(\{k\})=\sum_{k\in E}w_k
+\end{align*}
+\clearpage
+
+\subsection*{2\hspace{1pt}C\hspace{20pt}Exercise 9}
+\begin{itemize}
+    \item $\mu+\nu:\S\rightarrow[0,\infty]$
+    \item $(\mu+\nu)(\varnothing)=\mu(\varnothing)+\nu(\varnothing)=0$
+    \item For every disjoint sequence of sets $E_1, E_2, \dots\in\S$:
+    \begin{align*}
+        (\mu+\nu)(\bigcup_k E_k)=&\mu(\bigcup_k E_k)+\nu(\bigcup_k E_k)\\
+        =&\sum_k\mu(E_k)+\sum_k\nu(E_k)\\
+        =&\sum_k \mu(E_k)+\sum_k\nu(E_k)\\
+        =&\sum_k (\mu+\nu)(E_k)
+    \end{align*}
+\end{itemize}
+
+\clearpage
+
+\end{document}
