@@ -1,0 +1,140 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{2\hspace{1pt}D\hspace{20pt}Exercise 2 }
+\begin{enumerate}[I.]
+    \item Set $A\subseteq\R$ is Lebesgue measurable if and only if for every $\epsilon>0$ there exists closed set $F_{\epsilon}\subseteq A$ such that $|A\setminus F_{\epsilon}|<\epsilon$. We want to show that for every closed set $F$ in $A$ we have $|F|\leq |A|-1$. 
+    \\
+    \textbf{To see if $A$ can be a Lebesgue measurable set or not}:\\
+    Assume $A$ is a Lebesgue measurable set. Then $|F|\leq |A|-1$ for every closed set $F$ in $A$ which is the same as having $|A\setminus F|\geq1$ for every closed set $F$ in $A$, which is a \textbf{contradiction} with the definition of Legesgue measurable set.\\
+    Therefore the set $A$ is this exercise cannot be a Lebesgue measurable set.
+    \item Now we construct set $A$:\\
+    Let $V$ be the set defined in proof of \measure{2.18}, then we define $A:=\{\frac{k}{|V|}v| v\in V\}=\frac{k}{|V|}V$ for fixed $k\in\R$, $ k\geq1$. Since $V\subseteq[-1,1]$, then $A\subseteq[\frac{-k}{|V|}, \frac{k}{|V|}]$. Using \measure{2A Exercise 2}, outer measure of set $A$ can be written as $|A|=|\frac{k}{|V|}||V|=k$.
+
+    \item Let $B\subseteq A$ a Borel set with $|B|>0$. Also let $\{r_1, r_2, \dots\}:=[-1,1]\cap\mathbb{Q}$, then again by using the proof of \measure{2.18} we know that the sets $r_1+B, r_2+B, \dots$ are disjoint Borel sets.\\On the other hand, we have $\bigcup_{i=1}^\infty (r_i+B)\subseteq[\frac{-k}{|V|}-1, \frac{k}{|V|}+1]$. By measurability of the LHS and subadditivity property of outer measure we have:
+    \begin{align*}
+        |\bigcup_{i=1}^\infty (r_i+B)|&\leq2(\frac{k}{|V|}+1)\\
+        \sum_{i=1}^\infty|r_i+B|&\leq2(\frac{k}{|V|}+1)\\
+        \sum_{i=1}^\infty|B|&\leq2(\frac{k}{|V|}+1)\\
+        \infty&\leq2(\frac{k}{|V|}+1)
+    \end{align*}
+    which is a contradiction. Therefore $|B|=0$ for any Borel set contained in $A$.\\
+    Therefore for any closed set $F\subseteq A$ (also $F$ is a Borel set), $|A\setminus F|=|A|-|F|=k-0\geq1$. Hence $|F|\leq|A|-1$. 
+\end{enumerate}
+\clearpage
+
+\subsection*{2\hspace{1pt}D\hspace{20pt}Exercise 5}
+% \url{https://math.stackexchange.com/questions/4235369/if-a-is-lebesgue-measurable-then-there-exist-f-1-subset-f-2-subset-dots-clos}
+Since $A$ is a Lebesgue measurable set, for every $\epsilon>0$ there exists closed set $F_{\epsilon}\subseteq A$ such that $|A\setminus F_{\epsilon}|<\epsilon$.\\\\
+Now let $k\in\Z^{+}$, similarly there exists closed set $H_k\subseteq A$ such that $|A\setminus H_k|<\frac{1}{k}$.\\\\
+Now consider the increasing sequence of sets $\underbrace{H_1}_{F_1}, \underbrace{H_1\cup H_2}_{F_2}, \underbrace{H_1\cup H_2\cup H_3}_{F_3}, \dots,\underbrace{H_1\cup\dots\cup H_n}_{F_n}$ where $F_n:=\bigcup_{k=1}^nH_k$, where we can also define the sequence as:
+\begin{align*}
+    F_1&=H_1\\
+    F_{n+1}&=F_n\cup H_{n+1}\supseteq F_n \quad\forall n\geq 1
+\end{align*}
+$F_n$ is a closed set since union of every finite collection of closed sets is a closed set.\\(by \suppmeasure{0.64 (b)})\\
+
+We have
+\begin{align*}
+    A\setminus\bigcup_{n=1}^\infty F_n\subseteq A\setminus F_n \subseteq A\setminus H_k
+\end{align*}
+Therefore by order-preserving property of outer measure:
+\begin{align*}
+    \left|A\setminus\bigcup_{n=1}^\infty F_n\right|\leq\left|A\setminus H_k\right|<\frac{1}{k}
+\end{align*}
+since $k$ was chosen arbitrarily, then $\left|A\setminus\bigcup_{n=1}^\infty F_n\right|=0$.
+\clearpage
+
+\subsection*{2\hspace{1pt}D\hspace{20pt}Exercise 7}
+% \url{https://math.stackexchange.com/questions/4253081/if-a-is-lebesgue-measurable-there-exist-open-sets-g-1-supset-g-2-supset-dots}
+Since $A$ is a Lebesgue measurable set, for every $\epsilon>0$ there exists open set $G_{\epsilon}\supseteq A$ such that $|G_{\epsilon}\setminus A|<\epsilon$.\\\\
+Now let $k\in\Z^{+}$, similarly there exists open set $H_k\supseteq A$ such that $|H_k\setminus A|<\frac{1}{k}$.\\\\
+Now consider the decreasing sequence $\underbrace{H_1}_{G_1}, \underbrace{H_1\cap H_2}_{G_2}, \underbrace{H_1\cap H_2\cap H_3}_{G_3}, \dots,\underbrace{H_1\cap\dots\cap H_n}_{G_n}$ where $G_n:=\bigcap_{k=1}^nH_k$, where we can also define the sequence as:
+\begin{align*}
+    G_1&=H_1\\
+    G_{n+1}&=G_n\cup H_{n+1}\subseteq G_n \quad\forall n\geq 1
+\end{align*}
+$G_n$ is an open set since intersection of every finite collection of open sets is also an open set. (by \suppmeasure{0.55 (b)})\\
+
+We have
+\begin{align*}
+    \bigcap_{n=1}^\infty G_n\setminus A\subseteq G_n \setminus A \subseteq H_k \setminus A
+\end{align*}
+Therefore by order-preserving property of outer measure:
+\begin{align*}
+    \left|\bigcap_{n=1}^\infty G_n \setminus A \right|\leq\left|H_k \setminus A\right|<\frac{1}{k}
+\end{align*}
+since $k$ was chosen arbitrarily, then $\left|\bigcap_{n=1}^\infty G_n \setminus A \right|=0$.
+\clearpage
+
+\subsection*{2\hspace{1pt}D\hspace{20pt}Exercise 8}
+% \url{https://math.stackexchange.com/questions/4239838/if-a-subset-mathbbr-is-lebesgue-measurable-and-t-in-mathbbr-then-ta}
+Since $A$ is a Lebesgue measurable set, then there exists a Borel set $B\subseteq A$ such that $|A\setminus B|=0$, by definition.\\\\
+Since collection of Borel sets is translation invariant, then the set $t+B\subseteq t+A$ is also a Borel set for $t\in\R$. (by \measure{2B Exercise 7})\\\\
+By translation invariance property of outer measure we know that $|t+A\setminus B|=|A\setminus B|=0$.\\\\
+Using \textbf{Remark ($\spadesuit$)}, $t+A\setminus t+B\subseteq t+A\setminus B$, then by order preserving property of outer measure we have $|t+A\setminus t+B|\leq|t+A\setminus B|=0$.\\\\
+Therefore, $|t+A\setminus \underbrace{t+B}_{\text{Borel set}}|=0$ since the outer measure must be greater than or equal to zero.\\\\
+As a result, the set $t+A$ is Lebesgue measurable by definition.\\
+\hrule
+
+\subsubsection*{Remark ($\spadesuit$)}
+{\color{violet}$t+A\setminus t+B\subseteq t+A\setminus B$ for $t\in\R$ and arbitrary sets $A$ and $B$.\\
+}\textbf{proof.}
+Let $x\in t+A\setminus t+B$ then $x\in t+A$ and $x\notin t+B$, therefore we have $x-t\in A$ and $x-t\notin B$. Hence $x-t\in A\setminus B$ and then $x\in t+A\setminus B$.
+\clearpage
+
+\end{document}
