@@ -18,4 +18,5 @@
 | HW3 | **2.B**: 1, 4, 8, 12  | [PDF](assignments/HW3.pdf) |
 | HW4 | **2.B**: 18, 25 <br>**2.C**: 2, 9 | [PDF](assignments/HW4.pdf) |
 | HW5 | **2.D**: 2, 5, 7, 8  | [PDF](assignments/HW5.pdf) |
-| HW6 | - | [-]() |
+| HW6 | **2.E**: 1, 4, 5, 15 | [PDF](assignments/HW6.pdf) |
+| HW7 |  | [-]() |
