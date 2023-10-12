@@ -1,0 +1,131 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{2\hspace{1pt}E\hspace{20pt}Exercise 1}
+Suppose $f_1, f_2, \dots$ is a sequence of functions from $X$ to $\R$, point-wise converging to $f$ for each $x\in X$.\\
+Therefore, for each $x_i\in X$ and $\epsilon>0$ there exists $n_i\in\Z^+$ such that $|f_k(x_i)-f(x_i)|<\epsilon$ for all $k\geq n_i$. Since $X$ is a finite set, there exists
+\begin{align*}
+    N = \max\{n_i\;|\; n_i \text{ is the smallest positive integer satisfying}  \; |f_k(x_i)-f(x_i)|<\epsilon, \;\forall k\geq n_i, \epsilon>0, \forall x_i\in X\}
+\end{align*} 
+and by having $N$ defined as above, the convergence of $f_k$ to $f$ will be independent of the chosen $x\in X$. Therefore $f_k$ is uniformly convergent to $f$.
+\clearpage
+
+\subsection*{2\hspace{1pt}E\hspace{20pt}Exercise 4}
+% https://math.stackexchange.com/questions/1822611/if-f-n-to-f-uniformly-and-f-n-is-uniformly-continuous-for-all-n-then-f\\
+\textbf{Uniform continuity of $f_k$:} $\forall \epsilon>0$ there exists $\delta>0$ such that $|f_k(a)-f_k(b)|<\epsilon$, $\forall k\in \Z^+$, for all $a,b\in A$ with $|a-b|<\delta$.\\\\
+\textbf{Uniform convergence of $f_k$ to $f$:} $\forall \epsilon>0$ there exists $n\in\Z^+$ we have $\forall x\in A$ that $|f_k(x)-f(x)|<\epsilon$ for all integers $k\geq n$.\\\\
+Suppose there exists $\delta>0$ and $a,b\in A$ with $|a-b|<\delta$ such that $|f_k(a)-f_k(b)|<\epsilon'$ for $\epsilon'>0$. Also suppose that for the same $\epsilon'>0$ there exists $n\in\Z^+$ we have $|f_k(x)-f(x)|<\epsilon'$ for all integers $k\geq n$ and $\forall x\in A$.\\\\
+Therefore we can write:
+\begin{align*}
+    |f(a)-f(b)|&=|f(a)-f_n(a)+f_n(a)-f_n(b)+f_n(b)-f(b)|\\
+    &\leq |f(a)-f_n(a)|+|f_n(a)-f_n(b)|+|f_n(b)-f(b)|\\
+    &\leq \epsilon'+\epsilon'+\epsilon'=\epsilon
+\end{align*}
+where the last equality holds by choosing $\epsilon'=\frac{\epsilon}{3}$. Therefore the function $f$ is also uniformly continuous.
+\clearpage
+
+\subsection*{2\hspace{1pt}E\hspace{20pt}Exercise 5}
+Suppose sequence of functions $f_1, f_2, \dots$ from $[0,\infty]$ to $\{0,1\}$ be defined as:
+\begin{align*}
+    f_k(x)=
+    \begin{cases} 
+     1 & \text{if }x\in [k-1, k] \\
+     0 & \text{otherwise} 
+   \end{cases}
+\end{align*}
+hence this sequence if pointwise convergent to zero function.\\\\
+Suppose Egorov's theorem is true for this case and let $E\subseteq\R$ such that this sequence converges uniformly to zero function on $E$, i.e.,
+\begin{align*}
+    \forall\epsilon>0\;\; \exists n\in\Z^+\;\; \forall k\geq n\;\; \forall x\in E \text{ such that } |f_k(x)-0|<\epsilon
+\end{align*}
+Now assume $\epsilon=1$, then by definition of $f_k$ we must have $x\notin[n, \infty)$. As a result we must have $E\subseteq [0,n)$. We can see that $\mu(\R\setminus E)>\mu(\R\setminus[0,n))=\mu([n, \infty))=\infty$ and violates the Egorov's theorem. Therefore the hypothesis $\mu(X)<\infty$ is necessary for the Egorov's theorem.
+\clearpage
+
+\subsection*{2\hspace{1pt}E\hspace{20pt}Exercise 15}
+By \measure{2.89} there exists a sequence $f_1, f_2, \dots$ of Lebesgue measurable functions from $B$ to $\R$ converging pointwise on $B$ to $f$. Suppose $k\in\Z^+$. Then there exists $c_1, \dots, c_n\in B$ and disjoint Lebesgue measurable sets $A_1,\dots, A_n\subseteq B$ such that
+\begin{align*}
+    f_k=c_1\chi_{B_1}+\dots+c_n\chi_{B_n}.
+\end{align*}
+For each $j\in\{1,\dots,n\}$, there exists a Borel set $B_j\subseteq A_j$ such that $|A_j\setminus B_j|=0$.\\
+Let 
+\begin{align*}
+    g_k=c_1\chi_{B_1}+\dots+c_n\chi_{B_n}.
+\end{align*}
+Then $g_k$ is a Borel measurable function and $|\{x\in B: g_k(x)\neq f_k(x)\}|=0$.\\
+If $x\notin \bigcup_{k=1}^{\infty}\{x\in B: g_k(x)\neq f_k(x)\}$, then $g_k(x)=f_k(x)$ for all $k\in\Z^+$ and hence $\lim_{k\rightarrow\infty}g_k(x)=f(x)$. Let
+\begin{align*}
+    E=\{x\in B:\lim_{k\rightarrow\infty}g_k(x) \text{ exists in }\R\}.
+\end{align*}
+Then $E$ is a Borel subset of $B$ by \measure{2B Exercise 14}.
+Also,
+\begin{align*}
+    B\setminus E\subseteq\bigcup_{k=1}^\infty\{x\in B:g_k(x)\neq f_k(x)\}
+\end{align*}
+and thus $|B\setminus E|=0$. For $x\in B$, let
+\begin{align}
+    g(x)=\lim_{k\rightarrow\infty}(\chi_Eg_k)(x)
+    \label{eq:x}
+\end{align}
+If $x\in E$, then the limit above exists by the definition of $E$; if $x\in B\setminus E$, then the limit above exists because $(\chi_Eg_k)(x)=0$ for all $k\in\Z^+$.
+For each $k\in\Z^+$, then function $\chi_Eg_k$ is Borel measurable. Thus (\ref{eq:x}) implies that $g$ is a Borel measurable function (by \measure{2.48}). Because
+\begin{align*}
+    \{x\in B: g_k(x)\neq f_k(x)\}\subseteq\bigcup_{k=1}^\infty\{x\in B:g_k(x)\neq f_k(x)\},
+\end{align*}
+we have $|\{x\in B: g_k(x)\neq f_k(x)\}|=0$, completing the proof.
+\clearpage
+
+\end{document}
