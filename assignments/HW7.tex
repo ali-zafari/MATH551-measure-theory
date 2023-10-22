@@ -1,0 +1,143 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 2}
+First we show that $\int gd\delta_c=g(c)$ for any simple function $g=\sum_{i=1}^n e_i\chi_{E_i}$:
+\begin{align*}
+\int gd\delta_c=\int \left(\sum_{i=1}^n e_i\chi_{E_i}\right)d\delta_c=\sum_{i=1}^n e_i\delta_c({E_i})=\sum_{i=1}^n e_i\chi_c({E_i})(c)=g(c)
+\end{align*}
+where we used \measure{3.7}. 
+
+% Then we need to show that every non-negative $\S$-measurable function can be written as a simple function.
+
+Using approximation of an $\S$-measurable function by simple functions and Monotone Convergence Theorem (\measure{2.89, 3.11}), suppose $f_1, f_2, \dots$ is an increasing sequence of simple functions where $f=\lim_{k\rightarrow\infty}f_k$. Since each $f_k$ is a simple function, we have $\int f_kd \delta_c=f_k(c)$. 
+
+And since $\int fd\delta_c=\lim_{k\rightarrow\infty}\int f_kd\delta_c=\lim_{k\rightarrow\infty}f_k(c)$, then we have $\int fd \delta_c=f(c)$.
+\clearpage
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 3}
+We have $\{x\in X:f(x)>0\}=\lim_{k\rightarrow\infty}\{x\in X:f(x)>\frac{1}{k}\}$.
+\begin{itemize}[label={}]
+    \item \fbox{$\Rightarrow$}\\
+    If $\int fd\mu>0$ then 
+    \begin{align*}
+        \int_{\{x\in X:f(x)>0} fd\mu>0
+    \end{align*}
+    therefore we must have $\mu(\{x\in X:f(x)>\})>0$ since otherwise will be a contradiction (integration over empty set being greater than zero). 
+
+    \item \fbox{$\Leftarrow$}\\
+    If $\mu(\{x\in X:f(x)>0\})>0$ then there exists $k_0\in\Z^+$ such that $\mu(\{x\in X:f(x)>\frac{1}{k_0}\})>0$. Therefore:
+    \begin{align*}
+        \int_X f d\mu\geq\int_{\{x\in X:f(x)>\frac{1}{k_0}\}} f d\mu\geq \frac{1}{k_0}\mu(\{x\in X:f(x)>\frac{1}{k_0}\})>0
+    \end{align*}
+\end{itemize}
+\clearpage
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 9}
+Three properties of a measure should be verified for the proposed measure of $v(A)=\int \chi_Afd\mu=\int_Afd\mu$:
+\begin{itemize}
+    \item Since $v(A)=\int_Afd\mu$ is the supremum over lower Lebesgue sums, and each of the sums are non-negative, $v(A)$ must be non-negative as well. Therefore $v(A)\geq 0\quad\forall A\in\S$.
+    
+    \item Integral of $f$ over an empty set is zero, since the measure of that set is zero. Therefore $v(\varnothing)=0$.
+    
+    \item
+    Suppose disjoint sequence of sets $E_1, E_1, \dots\in \S$:
+    \begin{align*}
+        v(\bigcup_i E_i)&=\int\chi_{\cup_i E_i}f d\mu\\
+        &=\sum_i\int\chi_{E_i}f d\mu\\
+        &=\sum_i v(E_i)
+    \end{align*}
+
+    
+\end{itemize}
+\clearpage
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 15}
+\begin{enumerate}[(a)]
+    \item First we prove it for a simple function $g$. $g(x)=\sum_{i=1}^n c_i\chi_{E_i}(x)$ and $g_t(x)=\sum_{i=1}^n c_i\chi_{E_i}(x-t)=\sum_{i=1}^n c_i\chi_{t+E_i}(x)$. 
+
+    Then computing the integral:
+    \begin{align*}
+        \int g_td\lambda&=
+        \int\sum_{i=1}^n c_i\chi_{t+E_i}d\lambda\\
+        &=\sum_{i=1}^nc_i\lambda(t+E_i)\quad \measure{3.15}\\
+        &=\sum_{i=1}^nc_i\lambda(E_i) \quad \measure{2.7}\\
+        &=\int\sum_{i=1}^n c_i\chi_{E_i}d\lambda\\
+        &=\int gd\lambda
+    \end{align*}
+
+    Using approximation of an $\S$-measurable function by simple functions and Monotone Convergence Theorem (\measure{2.89, 3.11}), suppose $f^1, f^2, \dots$ is an increasing sequence of simple functions where $f=\lim_{k\rightarrow\infty}f^k$. Since each $f_k$ is a simple function, we have $\int f^k_t d\lambda=\int f^k d\lambda$. 
+    
+    Taking limit of both sides and using Monotone Convergence Theorem we have $\int f_td\lambda=\int fd\lambda$.
+
+    \item First we prove it for a simple function $g$. $g(x)=\sum_{i=1}^n c_i\chi_{E_i}(x)$ and $g_t(x)=\sum_{i=1}^n c_i\chi_{E_i}(tx)=\sum_{i=1}^n c_i\chi_{\frac{1}{t}E_i}(x)$.
+    Then computing the integral:
+    \begin{align*}
+        \int g_td\lambda&=
+        \int\sum_{i=1}^n c_i\chi_{\frac{1}{t}E_i}d\lambda\\
+        &=\sum_{i=1}^nc_i\lambda(\frac{1}{t}E_i)\quad \measure{3.15}\\
+        &=\frac{1}{|t|}\sum_{i=1}^nc_i\lambda(E_i) \quad \measure{Exercise 2A.2}\\
+        &=\frac{1}{|t|}\int\sum_{i=1}^n c_i\chi_{E_i}d\lambda\\
+        &=\frac{1}{|t|}\int gd\lambda
+    \end{align*}
+    Using approximation of an $\S$-measurable function by simple functions and Monotone Convergence Theorem (\measure{2.89, 3.11}), suppose $f^1, f^2, \dots$ is an increasing sequence of simple functions where $f=\lim_{k\rightarrow\infty}f^k$. Since each $f_k$ is a simple function, we have $\int f^k_t d\lambda=\int f^k d\lambda$. 
+    
+    Taking limit of both sides and using Monotone Convergence Theorem we have $\int f_td\lambda=\int fd\lambda$.
+\end{enumerate}
+\clearpage
+
+\end{document}
