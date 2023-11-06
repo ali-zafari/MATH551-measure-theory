@@ -1,0 +1,141 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 2}
+Suppose $f_1=e^{-|x|}, f_2=e^{\frac{-|x|}{2}}, f_3=e^{\frac{-|x|}{3}}, \dots$. 
+
+Then we have
+\begin{align*}
+    \lim_{k\rightarrow\infty}f_k(x)=\lim_{k\rightarrow\infty}e^{\frac{-|x|}{k}}=0
+\end{align*}
+Now we calculate the limit of the integral:
+\begin{align*}
+    \lim_{k\rightarrow\infty}\int f_k\;d\lambda
+    =\lim_{k\rightarrow\infty}\int_{-\infty}^{\infty} e^{\frac{-|x|}{k}}\;dx
+    =\lim_{k\rightarrow\infty}2\int_{0}^{\infty} e^{\frac{-x}{k}}\;dx
+    =\infty
+\end{align*}
+\clearpage
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 3}
+WLOG suppose $b\geq a$:
+\begin{align*}
+    \left|g(a)-g(b)\right|&=\left|\int_{(-\infty, a)}f\;d\lambda-\int_{(-\infty, b)}f\;d\lambda\right|\\
+    &=\left|\int_{(-\infty, a)}f\;d\lambda-\int_{(-\infty, a)}f\;d\lambda-\int_{(a, b)}f\;d\lambda\right|\\
+    &=\left|\int_{(a, b)}f\;d\lambda\right|\\
+    &\leq \lambda((a,b))\sup_{(a,b)}|f|
+\end{align*}
+where the last inequality holds by \measure{3.25}.
+\\
+Since $f\in\mathcal{L}^1(\lambda)$, then we can assume $\sup_{(a,b)}|f|=M<\infty$.
+\\\\
+Then to have $\left|g(a)-g(b)\right|<\epsilon$, we must have $(b-a)M<\epsilon$.
+\\
+Therefore, for fixed $\epsilon>0$ it suffices that we choose $\delta>\frac{\epsilon}{M}$ to have $\left|g(a)-g(b)\right|<\epsilon$ for all $a,b\in\R$ such that $|b-a|<\delta$. And by doing so, $g$ is uniformly continuous on $\R$.
+\clearpage
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 5}
+Let $f_1=f\chi_{[-1,1]}, f_2=f\chi_{[-2,2]}, f_3=f\chi_{[-3,3]},\dots$ be sequence of Borel measurable functions. We can see that
+\begin{align*}
+    \lim_{k\rightarrow \infty} f_k(x)=f(x)
+\end{align*}
+for any $x\in X$.\\
+
+
+Also $|f|$ is Borel measurable function from $X$ to $[0,\infty]$ satisfying two conditions:
+\begin{itemize}
+    \item $\int |f|\; d\lambda<\infty$
+    \item $|f_k(x)|\leq |f(x)|$
+\end{itemize}
+for arbitrary $k\in\Z^+$ and any $x\in X$.
+
+By using Dominated Convergence Theorem we have:
+\begin{align*}
+    \lim_{k\rightarrow \infty} \int f_k\; d\lambda=\int f\; d\lambda
+\end{align*}
+\clearpage
+
+\subsection*{3\hspace{1pt}A\hspace{20pt}Exercise 12}
+Let $f_1=\frac{(1-x)\cos(x^{-1})}{\sqrt{x}}, f_2=\frac{(1-x)^2\cos(x^{-2})}{\sqrt{x}}, f_3=\frac{(1-x)^3\cos(x^{-3})}{\sqrt{x}},\dots$ be sequence of measurable functions from $(0,1)$ to $[-\infty, \infty]$. We can see that
+\begin{align*}
+    \lim_{k\rightarrow \infty} f_k(x)=0
+\end{align*}
+for any $x\in (0,1)$.\\
+
+Now let $g_j(x)=\frac{1}{\sqrt{x}}\chi_{(\frac{1}{j},1)}$, where $g_j$ is a non-negative increasing sequence of functions from $(0,1)$ to $[0, \infty]$.
+We also have
+\begin{align*}
+    g(x)=\lim_{j\rightarrow\infty}g_j(x)
+\end{align*}
+by using Monotone Convergence Theorem we have 
+\begin{align*}
+    \lim_{j\rightarrow\infty}\int_{(0,1)} g_j\;d\mu=\int_{(0,1)} g\;d\mu
+\end{align*}
+Suppose $g(x)=\frac{1}{\sqrt{x}}$. Then $g$ is a Borel measurable function from $(0,1)$ to $[0,\infty]$ satisfying two conditions:
+\begin{itemize}
+    \item $\int_0^1 |g|\; d\mu=\int_{(0,1)} g d\mu=\lim_{j\rightarrow\infty}\int_{(0,1)} g_j\;d\mu=\lim_{j\rightarrow\infty}\int_0^1 g_j=\lim_{j\rightarrow\infty}\int_0^\frac{1}{j} x^{-1/2}dx= \lim_{j\rightarrow\infty}2-2\sqrt{\frac{1}{j}}=2 <\infty$
+    \item $|f_k(x)|\leq |g(x)|$
+\end{itemize}
+for arbitrary $k\in\Z^+$ and any $x\in X$.
+
+By using Dominated Convergence Theorem we have:
+\begin{align*}
+    \lim_{k\rightarrow \infty} \int_{(0,1)} f_k\; d\lambda=\int_{(0,1)} 0\; d\lambda=0
+\end{align*}
+\clearpage
+
+\end{document}
