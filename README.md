@@ -20,4 +20,5 @@
 | HW5 | **2.D**: 2, 5, 7, 8  | [PDF](assignments/HW5.pdf) |
 | HW6 | **2.E**: 1, 4, 5, 15 | [PDF](assignments/HW6.pdf) |
 | HW7 | **3.A**: 2, 3, 9, 15 | [PDF](assignments/HW7.pdf) |
-| HW8 |  | [-]() |
+| HW8 | **3.B**: 2, 3, 5, 12 | [PDF](assignments/HW8.pdf) |
+| HW9 | - | [-]() |
