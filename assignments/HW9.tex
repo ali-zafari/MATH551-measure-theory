@@ -1,0 +1,155 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{4\hspace{1pt}A\hspace{20pt}Exercise 1} Let $c, p>0$:
+\begin{align*}
+    \mu(\{x\in X: |h(x)|\geq c\})&=\int_{\{x\in X: |h(x)|\geq c\}} d\mu\\
+    &=\frac{1}{c^p}\int_{\{x\in X: |h(x)|\geq c\}} c^p\;d\mu\\
+    &\leq\frac{1}{c^p}\int_{\{x\in X: |h(x)|\geq c\}} |h|^p\;d\mu\\
+    &\leq\frac{1}{c^p}\int |h|^p\;d\mu
+\end{align*}
+\clearpage
+
+\subsection*{4\hspace{1pt}A\hspace{20pt}Exercise 2}
+Let $c>0$:
+\begin{align*}
+    \mu\left(\left\{x\in X: \left|h(x)-\int h\;d\mu\right|\geq c\right\}\right)&=\int_{\left\{x\in X: \left|h(x)-\int h\;d\mu\right|\geq c\right\}} d\mu\\
+    &=\frac{1}{c^2}\int_{\left\{x\in X: \left|h(x)-\int h\;d\mu\right|\geq c\right\}} c^2\;d\mu\\
+    &\leq\frac{1}{c^2}\int_{\{x\in X: |h(x)|\geq c\}} \left|h(x)-\int h\;d\mu\right|^2\;d\mu\\
+    &\leq\frac{1}{c^2}\int \left|h(x)-\int h\;d\mu\right|^2\;d\mu\\
+    &=\frac{1}{c^2}\int \left[|h|^2-2h(x)\int h\;d\mu+\left(\int h\;d\mu\right)^2\right] \;d\mu\\
+    &=\frac{1}{c^2}\left[\int h^2\;d\mu-2(\int h\;d\mu)\int h\;d\mu+\left(\int h\;d\mu\right)^2 \int d\mu\right]\\
+    &=\frac{1}{c^2}\left[\int h^2\;d\mu-2\left(\int h\;d\mu\right)^2+\left(\int h\;d\mu\right)^2\left(1\right)\right]\\
+    &=\frac{1}{c^2}\left[\int h^2\;d\mu-\left(\int h\;d\mu\right)^2\right]
+\end{align*}
+\clearpage
+
+\subsection*{4\hspace{1pt}A\hspace{20pt}Exercise 4}
+Assume arbitrary large $n>0$. Let $I_1=(0,1)$ and $I_2=(1-\frac{1}{n}, 2-\frac{1}{n})$, their union will be $I_1\cup I_2=(0,2-\frac{1}{n})$.\\
+Let $v>0$ be the Vitalli constant, then:
+\begin{align*}
+    v*I_1&=(-0.5v+0.5,0.5v+0.5)\\
+    v*I_2&=(-0.5v+1.5-\frac{1}{n},0.5v++1.5-\frac{1}{n})
+\end{align*}
+to have at least one of $v*I_1$ or $v*I_1$ be able to cover the union of $I_1$ and $I_2$, we must have:
+\begin{align*}
+    -0.5v+1.5-\frac{1}{n}<0\\
+    v>3-\frac{2}{n}
+\end{align*}
+or
+\begin{align*}
+    0.5v+0.5>2-\frac{1}{n}\\
+    v>3-\frac{2}{n}
+\end{align*}
+Since $n$ was chosen arbitrarily large, the only way to have Vitali Covering Lemma be correct, is to have its constant at least 3.
+\clearpage
+
+\subsection*{4\hspace{1pt}A\hspace{20pt}Exercise 8}
+To find $h^*(b)=\sup_{t>0}\frac{1}{2t}\int_{b-t}^{b+t}|h|$, we separately find it over partitions on $b$:
+\begin{itemize}
+    \item $\mathbf{b<0}$\\
+    If  $\color{blue}b+t\leq0$ then $h^*(b)=0$.\\
+    Else if $\color{blue}b+t>0$, we can assume two partitions:
+    \begin{itemize}[label={}]
+        \item $\mathbf{b+t>1}$
+        \begin{align*}
+            \frac{1}{2t}\int_0^1x\;dx=\frac{1}{4t}<\frac{1}{4(1-b)}
+        \end{align*}
+        \item $\mathbf{1>b+t>0}$
+        \begin{align*}
+            \frac{1}{2t}\int_0^{b+t}x\;dx=\frac{(b+t)^2}{4t}<\frac{1}{4(1-b)}
+        \end{align*}
+    \end{itemize}
+    hence in this region $h^*(b)=\frac{1}{4(1-b)}$.
+    
+    \item $\mathbf{b>1}$\\
+    If  $\color{blue}b-t\geq1$ then $h^*(b)=0$.\\
+    Else if $\color{blue}b-t<1$, we can assume two partitions:
+    \begin{itemize}[label={}]
+        \item $\mathbf{b-t<0}$
+        \begin{align*}
+            \frac{1}{2t}\int_0^1x\;dx=\frac{1}{4t}<\frac{1}{4b}
+        \end{align*}
+        \item $\mathbf{0<b-t<1}$
+        \begin{align*}
+            \frac{1}{2t}\int_{b-t}^{1}x\;dx=\frac{1-(b-t)^2}{4t}
+        \end{align*}
+        To find the supremum of the above, we look for $t>0$ which makes the derivative zero:
+        \begin{align*}
+            t=\sqrt{b^2-1}
+        \end{align*}
+        then we replace it into the expression above:
+        \begin{align*}
+            \frac{1-(b-t)^2}{4t}\leq\frac{b-\sqrt{b^2-1}}{2}
+        \end{align*}
+    \end{itemize}
+
+    \item $\mathbf{0<b<1}$\\
+    In this case, $\frac{1}{2t}\int_{b-t}^{b+t}x\;dx=b$.
+\end{itemize}
+To conclude, the Hardy-Littlewood maximal function is:
+\begin{equation}
+h^*(b)=
+    \begin{cases}
+        \frac{1}{4(1-b)} & \text{if } b \in (-\infty,0)\\
+        b & \text{if } b \in [0,1]\\
+        \frac{b-\sqrt{b^2-1}}{2} & \text{if } b \in (1,\infty)\\
+    \end{cases}
+\end{equation}
+\clearpage
+
+\end{document}
