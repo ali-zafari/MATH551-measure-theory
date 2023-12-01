@@ -1,0 +1,125 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text, you can remove this in your actual document.
+
+\usepackage[headings]{fullpage} % Set margins and place page numbers at bottom center
+\usepackage[shortlabels]{enumitem} % Use a. in the enumerate
+\usepackage{amsmath} % aligned equations
+\usepackage{graphicx} % include figure
+\usepackage{float} % usage of H for figure float
+\usepackage{amssymb} % \blacksqure
+\usepackage{xhfill} % fill horizontal line
+\usepackage{sectsty} % section coloring
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{bm}
+
+\onehalfspacing
+\subsectionfont{\color{blue}}  % sets colour of sections
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer fields
+\renewcommand{\headrulewidth}{0.4pt} % Horizontal line under the header
+\setlength{\headheight}{18pt}
+
+\fancyhead[L]{\large MATH 551-001 \scriptsize Fall 2023}
+\fancyhead[C]{}
+\fancyhead[R]{\large \textbf{Ali Zafari - 800350381}} % Page number on the right side
+\fancyfoot[R]{\thepage}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\Real}{\mathcal{Re}}
+\newcommand{\poly}{\mathcal{P}}
+\newcommand{\mat}{\mathcal{M}}
+\renewcommand{\L}{L}
+\newcommand{\U}{U}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\Hom}{\mathcal{L}}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Range}{range}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\restr}[1]{|_{#1}}
+\renewcommand{\inf}{\mathop{\mathrm{inf}\vphantom{\mathrm{sup}}}}
+
+\newcommand{\measure}[1]{\textcolor{violet}{\fbox{\small#1 of Measure, Integration \& Real Analysis}}}
+\newcommand{\suppmeasure}[1]{\textcolor{violet}{\fbox{\small#1 of Supplement for Measure, Integration \& Real Analysis}}}
+
+\begin{document}
+
+\subsection*{4\hspace{1pt}B\hspace{20pt}Exercise 1}
+(Notation: $f_I=\frac{1}{|I|}\int_If$)\\\\
+Since $f\in\mathcal{L}^1(\R)$, by \measure{4.10} there exits $b\in\R$ such that
+\begin{align*}
+    \lim_{t\downarrow0}\frac{1}{2t}\int^{b+t}_{b-t}|f-f(b)|=0
+\end{align*}
+on the other hand we have:
+% \begin{align*}
+%     \frac{1}{2t}\int^{b+t}_{b-t}|f-f_{[b-t,b+t]}|&\leq\sup\{|f(x)-f_{[b-t,b+t]}|:|x-b|\leq t\}\\
+%     &=\sup\{|f(x)-\frac{1}{2t}\int^{b+t}_{b-t}f|:|x-b|\leq t\}
+% \end{align*}
+\begin{align*}
+    \frac{1}{2t}\int^{b+t}_{b-t}|f-f_{[b-t,b+t]}|&=\frac{1}{2t}\int^{b+t}_{b-t}|f-\frac{1}{2t}\int^{b+t}_{b-t}f|\\
+    &\leq \frac{1}{2t}\int^{b+t}_{b-t}|f-\frac{1}{2t}\int^{b+t}_{b-t}f(b)|\\
+    &=\frac{1}{2t}\int^{b+t}_{b-t}|f-f(b)|
+\end{align*}
+where taking $\lim_{t\downarrow0}$ of both sides completes the proof.
+\clearpage
+
+\subsection*{4\hspace{1pt}B\hspace{20pt}Exercise 2}
+(Notation: $f_I=\frac{1}{|I|}\int_If$)\\\\
+Since $f\in\mathcal{L}^1(\R)$, by \measure{4.10} there exits $b\in\R$ such that
+\begin{align*}
+    \lim_{t\downarrow0}\frac{1}{2t}\int^{b+t}_{b-t}|f-f(b)|=0
+\end{align*}
+Now let $I$ be an interval such that $b\in I$. Then:
+\begin{align*}
+    \left|(\frac{1}{|I|}\int_If)-f(b)\right|&=\left|(\frac{1}{|I|}\int_If)-\frac{1}{|I|}\int_If(b)\right|\\
+    &=\left|\frac{1}{|I|}\int_I(f-f(b))\right|\\
+    &\leq\frac{1}{|I|}\int_I\left|f-f(b)\right|\\
+    &\leq\frac{1}{|I|}\int^{b+|I|}_{b-|I|}\left|f-f(b)\right|
+\end{align*}
+therefore:
+\begin{align*}
+    \lim_{t\downarrow0}\sup\{f_I-f(b): I \text{ is an interval of length $t$ containing $b$} \}=0
+\end{align*}
+which implies the desired result:
+\begin{align*}
+    \lim_{t\downarrow0}\sup\{\frac{1}{|I|}\int_I\left|f-f_I\right|: I \text{ is an interval of length $t$ containing $b$} \}=0
+\end{align*}
+\clearpage
+
+\subsection*{4\hspace{1pt}B\hspace{20pt}Exercise 3}
+(Notation: $f_I=\frac{1}{|I|}\int_If$)\\\\
+Since $f^2\in\mathcal{L}^1(\R)$, we can assume that in a local neighborhood of $b\in\R$ we also have $f\in\mathcal{L}^1(\R)$. We have chosen $b$ by \measure{4.10} such that:
+\begin{align*}
+    \lim_{t\downarrow0}\frac{1}{2t}\int^{b+t}_{b-t}|f-f(b)|=0
+\end{align*}
+and also:
+\begin{align*}
+    \lim_{t\downarrow0}\frac{1}{2t}\int^{b+t}_{b-t}|f^2-f^2(b)|=0
+\end{align*}
+which implies that $\lim_{t\downarrow0}\frac{1}{2t}\int^{b+t}_{b-t}f=f(b)$ and $\lim_{t\downarrow0}\frac{1}{2t}\int^{b+t}_{b-t}f^2=f^2(b)$.
+
+We have
+\begin{align*}
+    \frac{1}{2t}\int^{b+t}_{b-t}|f-f(b)|^2=\frac{1}{2t}\int^{b+t}_{b-t}f^2 - 2f(b)\frac{1}{2t}\int^{b+t}_{b-t}f + f^2(b)
+\end{align*}
+where taking $\lim_{t\downarrow0}$ of both sides completes the proof.
+\clearpage
+
+\subsection*{4\hspace{1pt}B\hspace{20pt}Exercise 6}
+Since $h\in\mathcal{L}^1(\R)$, by \measure{4.19} we can define $g:\R\rightarrow\R$ such that $g(s)=\int^{s}_{-\infty}h$ and $g'(b)=f(b)$ for almost every $b\in\R$.\\\\
+By the hypothesis, since $\int^{s}_{-\infty}h=0$ for all $s\in\R$, then $g(s)=0$ for all $s\in\R$.\\\\
+As a result, $g'(b)=0=h(b)$ for almost every $b\in\R$.
+\clearpage
+
+\end{document}
