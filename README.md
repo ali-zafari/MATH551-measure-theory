@@ -1,6 +1,6 @@
 # MATH 551 - Introduction to Measure Theory
 
-- Fall 2023 [in progress]
+- Fall 2023
 
 - Syllabus: [link](syllabus.pdf)
  
@@ -22,4 +22,4 @@
 | HW07 | **3.A**: 2, 3, 9, 15 | [PDF](assignments/HW7.pdf) |
 | HW08 | **3.B**: 2, 3, 5, 12 | [PDF](assignments/HW8.pdf) |
 | HW09 | **4.A**: 1, 2, 4, 8 | [PDF](assignments/HW9.pdf) |
-| HW10 | - | [-]() |
+| HW10 |  **4.B**: 1, 2, 3, 6 | [PDF](assignments/HW10.pdf) |
